@@ -1,0 +1,94 @@
+body {
+	background: url(../img/login-bg.jpg) no-repeat center 0;
+	background-color: #dfdfdf;
+}
+
+ul,ol,li {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+img{
+	vertical-align:top;
+}
+a {
+	color: #333;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.clearfix:after {
+	content: "\0020";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.clearfix {
+	clear: both;
+	zoom: 1;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.login-wrap {
+	position: relative;
+	width: 1000px;
+	margin: 0 auto;
+}
+.logo {
+	width: 300px;
+	height: 60px;
+	background: url(../img/login-logo.png) no-repeat center center;
+	position: absolute;
+	top: 280px;
+	left: 150px;
+}
+
+#form {
+	position: absolute;
+	top: 260px;
+	right: 200px;
+}
+
+#form td {
+	padding: 5px 0;
+	font-size: 14px;
+}
+
+#form input {
+	display: inline-block;
+	width: 175px;
+	height: 24px;
+	line-height: 24px;
+}
+
+#login-btn {
+	width: 94px;
+	height: 28px;
+	background: url(../img/login-btn.png) no-repeat center center;
+	border: none;
+	cursor: pointer;
+}
+.correct,.error {
+	background-color: #ffffd0;
+	border: #ffad77 solid 1px;
+	padding: 5px 10px;
+	margin:10px 0;
+}
+.correct {
+	border-color: #51a351;
+	color: #51a351;
+}
+.error {
+	color: #ff0000;
+}

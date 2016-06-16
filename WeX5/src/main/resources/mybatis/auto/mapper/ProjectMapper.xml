@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.auto.mapper.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.auto.model.Project" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="enterprise_id" property="enterpriseId" jdbcType="INTEGER" />
+    <result column="department_id" property="departmentId" jdbcType="INTEGER" />
+    <result column="area_id" property="areaId" jdbcType="INTEGER" />
+    <result column="jxw_id" property="jxwId" jdbcType="INTEGER" />
+    <result column="type_id" property="typeId" jdbcType="TINYINT" />
+    <result column="status" property="status" jdbcType="TINYINT" />
+    <result column="contact" property="contact" jdbcType="VARCHAR" />
+    <result column="contactphone" property="contactphone" jdbcType="VARCHAR" />
+    <result column="contact_leader" property="contactLeader" jdbcType="VARCHAR" />
+    <result column="contact_jxw" property="contactJxw" jdbcType="VARCHAR" />
+    <result column="contact_id" property="contactId" jdbcType="INTEGER" />
+    <result column="starttime" property="starttime" jdbcType="INTEGER" />
+    <result column="endtime" property="endtime" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="INTEGER" />
+    <result column="totalinvest" property="totalinvest" jdbcType="REAL" />
+    <result column="pastinvest" property="pastinvest" jdbcType="REAL" />
+    <result column="importance" property="importance" jdbcType="BIT" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="mybatis.auto.model.ProjectWithBLOBs" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="object" property="object" jdbcType="LONGVARCHAR" />
+    <result column="progress" property="progress" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, enterprise_id, department_id, area_id, jxw_id, type_id, status, contact, 
+    contactphone, contact_leader, contact_jxw, contact_id, starttime, endtime, createtime, 
+    totalinvest, pastinvest, importance, remark, user_id
+  </sql>
+  <sql id="Blob_Column_List" >
+    content, object, progress
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from x_project
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from x_project
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="mybatis.auto.model.ProjectWithBLOBs" >
+    insert into x_project (id, name, enterprise_id, 
+      department_id, area_id, jxw_id, 
+      type_id, status, contact, 
+      contactphone, contact_leader, contact_jxw, 
+      contact_id, starttime, endtime, 
+      createtime, totalinvest, pastinvest, 
+      importance, remark, user_id, 
+      content, object, progress
+      )
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{enterpriseId,jdbcType=INTEGER}, 
+      #{departmentId,jdbcType=INTEGER}, #{areaId,jdbcType=INTEGER}, #{jxwId,jdbcType=INTEGER}, 
+      #{typeId,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{contact,jdbcType=VARCHAR}, 
+      #{contactphone,jdbcType=VARCHAR}, #{contactLeader,jdbcType=VARCHAR}, #{contactJxw,jdbcType=VARCHAR}, 
+      #{contactId,jdbcType=INTEGER}, #{starttime,jdbcType=INTEGER}, #{endtime,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=INTEGER}, #{totalinvest,jdbcType=REAL}, #{pastinvest,jdbcType=REAL}, 
+      #{importance,jdbcType=BIT}, #{remark,jdbcType=VARCHAR}, #{userId,jdbcType=INTEGER}, 
+      #{content,jdbcType=LONGVARCHAR}, #{object,jdbcType=LONGVARCHAR}, #{progress,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.auto.model.ProjectWithBLOBs" >
+    insert into x_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id,
+      </if>
+      <if test="departmentId != null" >
+        department_id,
+      </if>
+      <if test="areaId != null" >
+        area_id,
+      </if>
+      <if test="jxwId != null" >
+        jxw_id,
+      </if>
+      <if test="typeId != null" >
+        type_id,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="contact != null" >
+        contact,
+      </if>
+      <if test="contactphone != null" >
+        contactphone,
+      </if>
+      <if test="contactLeader != null" >
+        contact_leader,
+      </if>
+      <if test="contactJxw != null" >
+        contact_jxw,
+      </if>
+      <if test="contactId != null" >
+        contact_id,
+      </if>
+      <if test="starttime != null" >
+        starttime,
+      </if>
+      <if test="endtime != null" >
+        endtime,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="totalinvest != null" >
+        totalinvest,
+      </if>
+      <if test="pastinvest != null" >
+        pastinvest,
+      </if>
+      <if test="importance != null" >
+        importance,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="userId != null" >
+        user_id,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="object != null" >
+        object,
+      </if>
+      <if test="progress != null" >
+        progress,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null" >
+        #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="jxwId != null" >
+        #{jxwId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        #{typeId,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="contact != null" >
+        #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLeader != null" >
+        #{contactLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="contactJxw != null" >
+        #{contactJxw,jdbcType=VARCHAR},
+      </if>
+      <if test="contactId != null" >
+        #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        #{starttime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=INTEGER},
+      </if>
+      <if test="totalinvest != null" >
+        #{totalinvest,jdbcType=REAL},
+      </if>
+      <if test="pastinvest != null" >
+        #{pastinvest,jdbcType=REAL},
+      </if>
+      <if test="importance != null" >
+        #{importance,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="object != null" >
+        #{object,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="progress != null" >
+        #{progress,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.auto.model.ProjectWithBLOBs" >
+    update x_project
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="enterpriseId != null" >
+        enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      </if>
+      <if test="departmentId != null" >
+        department_id = #{departmentId,jdbcType=INTEGER},
+      </if>
+      <if test="areaId != null" >
+        area_id = #{areaId,jdbcType=INTEGER},
+      </if>
+      <if test="jxwId != null" >
+        jxw_id = #{jxwId,jdbcType=INTEGER},
+      </if>
+      <if test="typeId != null" >
+        type_id = #{typeId,jdbcType=TINYINT},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="contact != null" >
+        contact = #{contact,jdbcType=VARCHAR},
+      </if>
+      <if test="contactphone != null" >
+        contactphone = #{contactphone,jdbcType=VARCHAR},
+      </if>
+      <if test="contactLeader != null" >
+        contact_leader = #{contactLeader,jdbcType=VARCHAR},
+      </if>
+      <if test="contactJxw != null" >
+        contact_jxw = #{contactJxw,jdbcType=VARCHAR},
+      </if>
+      <if test="contactId != null" >
+        contact_id = #{contactId,jdbcType=INTEGER},
+      </if>
+      <if test="starttime != null" >
+        starttime = #{starttime,jdbcType=INTEGER},
+      </if>
+      <if test="endtime != null" >
+        endtime = #{endtime,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=INTEGER},
+      </if>
+      <if test="totalinvest != null" >
+        totalinvest = #{totalinvest,jdbcType=REAL},
+      </if>
+      <if test="pastinvest != null" >
+        pastinvest = #{pastinvest,jdbcType=REAL},
+      </if>
+      <if test="importance != null" >
+        importance = #{importance,jdbcType=BIT},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null" >
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="object != null" >
+        object = #{object,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="progress != null" >
+        progress = #{progress,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="mybatis.auto.model.ProjectWithBLOBs" >
+    update x_project
+    set name = #{name,jdbcType=VARCHAR},
+      enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      jxw_id = #{jxwId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      contact = #{contact,jdbcType=VARCHAR},
+      contactphone = #{contactphone,jdbcType=VARCHAR},
+      contact_leader = #{contactLeader,jdbcType=VARCHAR},
+      contact_jxw = #{contactJxw,jdbcType=VARCHAR},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      starttime = #{starttime,jdbcType=INTEGER},
+      endtime = #{endtime,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=INTEGER},
+      totalinvest = #{totalinvest,jdbcType=REAL},
+      pastinvest = #{pastinvest,jdbcType=REAL},
+      importance = #{importance,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER},
+      content = #{content,jdbcType=LONGVARCHAR},
+      object = #{object,jdbcType=LONGVARCHAR},
+      progress = #{progress,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.auto.model.Project" >
+    update x_project
+    set name = #{name,jdbcType=VARCHAR},
+      enterprise_id = #{enterpriseId,jdbcType=INTEGER},
+      department_id = #{departmentId,jdbcType=INTEGER},
+      area_id = #{areaId,jdbcType=INTEGER},
+      jxw_id = #{jxwId,jdbcType=INTEGER},
+      type_id = #{typeId,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      contact = #{contact,jdbcType=VARCHAR},
+      contactphone = #{contactphone,jdbcType=VARCHAR},
+      contact_leader = #{contactLeader,jdbcType=VARCHAR},
+      contact_jxw = #{contactJxw,jdbcType=VARCHAR},
+      contact_id = #{contactId,jdbcType=INTEGER},
+      starttime = #{starttime,jdbcType=INTEGER},
+      endtime = #{endtime,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=INTEGER},
+      totalinvest = #{totalinvest,jdbcType=REAL},
+      pastinvest = #{pastinvest,jdbcType=REAL},
+      importance = #{importance,jdbcType=BIT},
+      remark = #{remark,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

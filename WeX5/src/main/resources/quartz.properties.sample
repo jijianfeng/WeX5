@@ -1,0 +1,6 @@
+#Configure quartz start time
+quartz.hour=2
+quartz.minute=0
+quartz.second=0
+#Configure the task start  yes  or  no
+quartz.open=yes

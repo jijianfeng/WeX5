@@ -1,0 +1,59 @@
+/* 代码整理：懒人之家 lanrenzhijia.com */
+
+body {
+	background-color:#333;
+	color:#FFFFFF
+}
+a {
+	color:#FFCC00;
+}
+img {
+	border:none;
+}
+#wrapper {
+	position:absolute;
+	width:780;
+	height:400px;
+	top:50%;
+	left:50%;
+	margin-top:-200px;
+	margin-left:-390px;
+	text-align:center;
+}
+#header {
+	display:block;
+	position:relative;
+	width:776px;
+	height:213px;
+	background:url(../images/header.png) no-repeat;
+}
+#videoswrap {
+	position:relative;
+	height:150px;
+}
+#footer {
+	position:relative;
+	width:776px;
+	height:80px;
+	padding-top:30px;
+	background:url(../images/footer.png) no-repeat;
+}
+#links, #videos {
+	list-style: none;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+#links li {
+	float:left;
+	margin-left:70px;
+}
+#videos li {
+	float:left;
+	margin-left:30px;
+}
+#fancy_div {
+	background:url(../images/video_bg.png) no-repeat;
+}
+
+/* 代码整理：懒人之家 lanrenzhijia.com */

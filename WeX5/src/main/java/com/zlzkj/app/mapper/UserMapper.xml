@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlzkj.app.mapper.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.zlzkj.app.model.User" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="user_phone" property="userPhone" jdbcType="VARCHAR" />
+    <result column="user_password" property="userPassword" jdbcType="VARCHAR" />
+    <result column="real_name" property="realName" jdbcType="VARCHAR" />
+    <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+    <result column="image_url" property="imageUrl" jdbcType="VARCHAR" />
+    <result column="user_mail" property="userMail" jdbcType="VARCHAR" />
+    <result column="user_age" property="userAge" jdbcType="INTEGER" />
+    <result column="user_intro" property="userIntro" jdbcType="VARCHAR" />
+    <result column="user_sex" property="userSex" jdbcType="INTEGER" />
+    <result column="login_time" property="loginTime" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="university_name" property="universityName" jdbcType="INTEGER" />
+    <result column="user_type" property="userType" jdbcType="INTEGER" />
+    <result column="check_code" property="checkCode" jdbcType="VARCHAR" />
+    <result column="check_code_time" property="checkCodeTime" jdbcType="VARCHAR" />
+    <result column="tyr_login" property="tyrLogin" jdbcType="INTEGER" />
+    <result column="try_login_time" property="tryLoginTime" jdbcType="INTEGER" />
+    <result column="user_address" property="userAddress" jdbcType="VARCHAR" />
+    <result column="work_name" property="workName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="three_id" property="threeId" jdbcType="VARCHAR" />
+    <result column="three_type" property="threeType" jdbcType="INTEGER" />
+    <result column="registration_id" property="registrationId" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, user_phone, user_password, real_name, nick_name, image_url, user_mail, user_age, 
+    user_intro, user_sex, login_time, role_id, university_name, user_type, check_code, 
+    check_code_time, tyr_login, try_login_time, user_address, work_name, status, three_id, 
+    three_type, registration_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from w_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from w_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlzkj.app.model.User" >
+  	<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into w_user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userPhone != null" >
+        user_phone,
+      </if>
+      <if test="userPassword != null" >
+        user_password,
+      </if>
+      <if test="realName != null" >
+        real_name,
+      </if>
+      <if test="nickName != null" >
+        nick_name,
+      </if>
+      <if test="imageUrl != null" >
+        image_url,
+      </if>
+      <if test="userMail != null" >
+        user_mail,
+      </if>
+      <if test="userAge != null" >
+        user_age,
+      </if>
+      <if test="userIntro != null" >
+        user_intro,
+      </if>
+      <if test="userSex != null" >
+        user_sex,
+      </if>
+      <if test="loginTime != null" >
+        login_time,
+      </if>
+      <if test="roleId != null" >
+        role_id,
+      </if>
+      <if test="universityName != null" >
+        university_name,
+      </if>
+      <if test="userType != null" >
+        user_type,
+      </if>
+      <if test="checkCode != null" >
+        check_code,
+      </if>
+      <if test="checkCodeTime != null" >
+        check_code_time,
+      </if>
+      <if test="tyrLogin != null" >
+        tyr_login,
+      </if>
+      <if test="tryLoginTime != null" >
+        try_login_time,
+      </if>
+      <if test="userAddress != null" >
+        user_address,
+      </if>
+      <if test="workName != null" >
+        work_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="threeId != null" >
+        three_id,
+      </if>
+      <if test="threeType != null" >
+        three_type,
+      </if>
+      <if test="registrationId != null" >
+        registration_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userPhone != null" >
+        #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userMail != null" >
+        #{userMail,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null" >
+        #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="userIntro != null" >
+        #{userIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null" >
+        #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="universityName != null" >
+        #{universityName,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null" >
+        #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="checkCode != null" >
+        #{checkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCodeTime != null" >
+        #{checkCodeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="tyrLogin != null" >
+        #{tyrLogin,jdbcType=INTEGER},
+      </if>
+      <if test="tryLoginTime != null" >
+        #{tryLoginTime,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null" >
+        #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workName != null" >
+        #{workName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="threeId != null" >
+        #{threeId,jdbcType=VARCHAR},
+      </if>
+      <if test="threeType != null" >
+        #{threeType,jdbcType=INTEGER},
+      </if>
+      <if test="registrationId != null" >
+        #{registrationId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zlzkj.app.model.User" >
+    update w_user
+    <set >
+      <if test="userPhone != null" >
+        user_phone = #{userPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="userPassword != null" >
+        user_password = #{userPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="realName != null" >
+        real_name = #{realName,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="imageUrl != null" >
+        image_url = #{imageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="userMail != null" >
+        user_mail = #{userMail,jdbcType=VARCHAR},
+      </if>
+      <if test="userAge != null" >
+        user_age = #{userAge,jdbcType=INTEGER},
+      </if>
+      <if test="userIntro != null" >
+        user_intro = #{userIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="userSex != null" >
+        user_sex = #{userSex,jdbcType=INTEGER},
+      </if>
+      <if test="loginTime != null" >
+        login_time = #{loginTime,jdbcType=INTEGER},
+      </if>
+      <if test="roleId != null" >
+        role_id = #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="universityName != null" >
+        university_name = #{universityName,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null" >
+        user_type = #{userType,jdbcType=INTEGER},
+      </if>
+      <if test="checkCode != null" >
+        check_code = #{checkCode,jdbcType=VARCHAR},
+      </if>
+      <if test="checkCodeTime != null" >
+        check_code_time = #{checkCodeTime,jdbcType=VARCHAR},
+      </if>
+      <if test="tyrLogin != null" >
+        tyr_login = #{tyrLogin,jdbcType=INTEGER},
+      </if>
+      <if test="tryLoginTime != null" >
+        try_login_time = #{tryLoginTime,jdbcType=INTEGER},
+      </if>
+      <if test="userAddress != null" >
+        user_address = #{userAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="workName != null" >
+        work_name = #{workName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="threeId != null" >
+        three_id = #{threeId,jdbcType=VARCHAR},
+      </if>
+      <if test="threeType != null" >
+        three_type = #{threeType,jdbcType=INTEGER},
+      </if>
+      <if test="registrationId != null" >
+        registration_id = #{registrationId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

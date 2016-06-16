@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.auto.mapper.ProjectProgressMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.auto.model.ProjectProgress" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="ptime" property="ptime" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="mybatis.auto.model.ProjectProgressWithBLOBs" extends="BaseResultMap" >
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="object" property="object" jdbcType="LONGVARCHAR" />
+    <result column="schedule" property="schedule" jdbcType="LONGVARCHAR" />
+    <result column="problem" property="problem" jdbcType="LONGVARCHAR" />
+    <result column="solution" property="solution" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, ptime, remark
+  </sql>
+  <sql id="Blob_Column_List" >
+    content, object, schedule, problem, solution
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from x_project_progress
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from x_project_progress
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="mybatis.auto.model.ProjectProgressWithBLOBs" >
+    insert into x_project_progress (id, project_id, ptime, 
+      remark, content, object, 
+      schedule, problem, solution
+      )
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{ptime,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{content,jdbcType=LONGVARCHAR}, #{object,jdbcType=LONGVARCHAR}, 
+      #{schedule,jdbcType=LONGVARCHAR}, #{problem,jdbcType=LONGVARCHAR}, #{solution,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.auto.model.ProjectProgressWithBLOBs" >
+    insert into x_project_progress
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="ptime != null" >
+        ptime,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="content != null" >
+        content,
+      </if>
+      <if test="object != null" >
+        object,
+      </if>
+      <if test="schedule != null" >
+        schedule,
+      </if>
+      <if test="problem != null" >
+        problem,
+      </if>
+      <if test="solution != null" >
+        solution,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="ptime != null" >
+        #{ptime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="object != null" >
+        #{object,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="schedule != null" >
+        #{schedule,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="problem != null" >
+        #{problem,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="solution != null" >
+        #{solution,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.auto.model.ProjectProgressWithBLOBs" >
+    update x_project_progress
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="ptime != null" >
+        ptime = #{ptime,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null" >
+        content = #{content,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="object != null" >
+        object = #{object,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="schedule != null" >
+        schedule = #{schedule,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="problem != null" >
+        problem = #{problem,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="solution != null" >
+        solution = #{solution,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="mybatis.auto.model.ProjectProgressWithBLOBs" >
+    update x_project_progress
+    set project_id = #{projectId,jdbcType=INTEGER},
+      ptime = #{ptime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      content = #{content,jdbcType=LONGVARCHAR},
+      object = #{object,jdbcType=LONGVARCHAR},
+      schedule = #{schedule,jdbcType=LONGVARCHAR},
+      problem = #{problem,jdbcType=LONGVARCHAR},
+      solution = #{solution,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.auto.model.ProjectProgress" >
+    update x_project_progress
+    set project_id = #{projectId,jdbcType=INTEGER},
+      ptime = #{ptime,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

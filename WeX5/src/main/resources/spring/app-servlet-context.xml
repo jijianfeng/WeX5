@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" 
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc 
+	http://www.springframework.org/schema/mvc/spring-mvc.xsd
+    http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/context 
+    http://www.springframework.org/schema/context/spring-context.xsd">	
+	<!-- 启用SpringMVC的注解功能,它会自动注册HandlerMapping、HandlerAdapter、ExceptionResolver的相关实例 -->
+	<mvc:annotation-driven />
+	
+	<!-- spring mvc配置中只扫描Controller，其他交给root上下文配置扫描 -->
+	<context:component-scan base-package="com.zlzkj.app.controller" />
+	
+	<!-- 拦截器配置 -->
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.zlzkj.core.base.BaseInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<bean class="com.zlzkj.app.interceptor.CoreInterceptor">
+				<property name="exclude">  
+		            <list>  
+		              <!-- 如果请求中是以以下路径开头，则不进行拦截 -->
+		              <value>/static</value>
+		              <value>/public</value>
+		              <value>/mobile</value>
+		            </list>  
+	        	</property>
+			</bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- 静态文件访问 -->
+	<mvc:resources mapping="/static/**" location="/static/" />
+	
+	<!-- 配置SpringMVC的视图解析器，默认就是JSP -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<!-- <property name="viewClass" value="org.springframework.web.servlet.view.JstlView" /> -->
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 支持文件上传 -->
+	<bean id="multipartResolver" class="com.zlzkj.core.base.MyMultipartResolver">
+		<property name="defaultEncoding" value="utf-8"></property>	
+		<!-- 设置上传文件的最大尺寸 -->
+		<!-- <property name="maxUploadSize" value="1024000000"></property> -->
+		<property name="maxUploadSize" value="17179869184"></property>
+		<property name="excludeUrl">  
+            <list>  
+              <!-- 如果请求中包含以下路径，则不进行拦截 -->  
+              <value>/vod/upload/flash</value>
+            </list>  
+       	</property> 
+	</bean>
+	
+	
+</beans>

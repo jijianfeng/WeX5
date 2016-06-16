@@ -1,0 +1,36 @@
+[{
+	"id": 1,
+	"cateName": "通常因素",
+	"count": 33,
+	"isShow": 1,
+	"is_parent": 1,
+	"children": [{
+		"pid": 1,
+		"id": 11,
+		"cateName": "环境因素",
+		"isShow": 1,
+		"orderId": 1,
+		"count": 21
+	},{
+		"pid": 1,
+		"id": 12,
+		"cateName": "人员因素",
+		"isShow": 0,
+		"orderId": 1,
+		"count": 12
+	}]
+},{
+	"id": 2,
+	"cateName": "其他因素",
+	"count": 11,
+	"isShow": 1,
+	"is_parent": 1,
+	"children": [{
+		"pid": 2,
+		"id": 21,
+		"cateName": "其他",
+		"isShow": 0,
+		"orderId": 1,
+		"count": 9
+	}]
+}]

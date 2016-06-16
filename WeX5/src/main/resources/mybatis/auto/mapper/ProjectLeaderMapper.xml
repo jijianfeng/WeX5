@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mybatis.auto.mapper.ProjectLeaderMapper" >
+  <resultMap id="BaseResultMap" type="mybatis.auto.model.ProjectLeader" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="project_id" property="projectId" jdbcType="INTEGER" />
+    <result column="time" property="time" jdbcType="INTEGER" />
+    <result column="leader" property="leader" jdbcType="VARCHAR" />
+    <result column="accompany" property="accompany" jdbcType="VARCHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="mybatis.auto.model.ProjectLeaderWithBLOBs" extends="BaseResultMap" >
+    <result column="problem" property="problem" jdbcType="LONGVARCHAR" />
+    <result column="solution" property="solution" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, project_id, time, leader, accompany, remark
+  </sql>
+  <sql id="Blob_Column_List" >
+    problem, solution
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from x_project_leader
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from x_project_leader
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="mybatis.auto.model.ProjectLeaderWithBLOBs" >
+    insert into x_project_leader (id, project_id, time, 
+      leader, accompany, remark, 
+      problem, solution)
+    values (#{id,jdbcType=INTEGER}, #{projectId,jdbcType=INTEGER}, #{time,jdbcType=INTEGER}, 
+      #{leader,jdbcType=VARCHAR}, #{accompany,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{problem,jdbcType=LONGVARCHAR}, #{solution,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="mybatis.auto.model.ProjectLeaderWithBLOBs" >
+    insert into x_project_leader
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="projectId != null" >
+        project_id,
+      </if>
+      <if test="time != null" >
+        time,
+      </if>
+      <if test="leader != null" >
+        leader,
+      </if>
+      <if test="accompany != null" >
+        accompany,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="problem != null" >
+        problem,
+      </if>
+      <if test="solution != null" >
+        solution,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="projectId != null" >
+        #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        #{time,jdbcType=INTEGER},
+      </if>
+      <if test="leader != null" >
+        #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="accompany != null" >
+        #{accompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="problem != null" >
+        #{problem,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="solution != null" >
+        #{solution,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="mybatis.auto.model.ProjectLeaderWithBLOBs" >
+    update x_project_leader
+    <set >
+      <if test="projectId != null" >
+        project_id = #{projectId,jdbcType=INTEGER},
+      </if>
+      <if test="time != null" >
+        time = #{time,jdbcType=INTEGER},
+      </if>
+      <if test="leader != null" >
+        leader = #{leader,jdbcType=VARCHAR},
+      </if>
+      <if test="accompany != null" >
+        accompany = #{accompany,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="problem != null" >
+        problem = #{problem,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="solution != null" >
+        solution = #{solution,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="mybatis.auto.model.ProjectLeaderWithBLOBs" >
+    update x_project_leader
+    set project_id = #{projectId,jdbcType=INTEGER},
+      time = #{time,jdbcType=INTEGER},
+      leader = #{leader,jdbcType=VARCHAR},
+      accompany = #{accompany,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      problem = #{problem,jdbcType=LONGVARCHAR},
+      solution = #{solution,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="mybatis.auto.model.ProjectLeader" >
+    update x_project_leader
+    set project_id = #{projectId,jdbcType=INTEGER},
+      time = #{time,jdbcType=INTEGER},
+      leader = #{leader,jdbcType=VARCHAR},
+      accompany = #{accompany,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

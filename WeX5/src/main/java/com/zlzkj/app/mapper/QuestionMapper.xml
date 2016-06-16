@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlzkj.app.mapper.QuestionMapper" >
+  <resultMap id="BaseResultMap" type="com.zlzkj.app.model.Question" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="question_name" property="questionName" jdbcType="VARCHAR" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="INTEGER" />
+    <result column="choice_namea" property="choiceNamea" jdbcType="VARCHAR" />
+    <result column="choice_nameb" property="choiceNameb" jdbcType="VARCHAR" />
+    <result column="choice_namec" property="choiceNamec" jdbcType="VARCHAR" />
+    <result column="choice_named" property="choiceNamed" jdbcType="VARCHAR" />
+    <result column="question_type" property="questionType" jdbcType="INTEGER" />
+    <result column="choice_value" property="choiceValue" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, question_name, status, add_time, choice_namea, choice_nameb, choice_namec, 
+    choice_named, question_type, choice_value
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from w_question
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from w_question
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlzkj.app.model.Question" >
+    insert into w_question
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="questionName != null" >
+        question_name,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="choiceNamea != null" >
+        choice_namea,
+      </if>
+      <if test="choiceNameb != null" >
+        choice_nameb,
+      </if>
+      <if test="choiceNamec != null" >
+        choice_namec,
+      </if>
+      <if test="choiceNamed != null" >
+        choice_named,
+      </if>
+      <if test="questionType != null" >
+        question_type,
+      </if>
+      <if test="choiceValue != null" >
+        choice_value,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="questionName != null" >
+        #{questionName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="choiceNamea != null" >
+        #{choiceNamea,jdbcType=VARCHAR},
+      </if>
+      <if test="choiceNameb != null" >
+        #{choiceNameb,jdbcType=VARCHAR},
+      </if>
+      <if test="choiceNamec != null" >
+        #{choiceNamec,jdbcType=VARCHAR},
+      </if>
+      <if test="choiceNamed != null" >
+        #{choiceNamed,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="choiceValue != null" >
+        #{choiceValue,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zlzkj.app.model.Question" >
+    update w_question
+    <set >
+      <if test="questionName != null" >
+        question_name = #{questionName,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="choiceNamea != null" >
+        choice_namea = #{choiceNamea,jdbcType=VARCHAR},
+      </if>
+      <if test="choiceNameb != null" >
+        choice_nameb = #{choiceNameb,jdbcType=VARCHAR},
+      </if>
+      <if test="choiceNamec != null" >
+        choice_namec = #{choiceNamec,jdbcType=VARCHAR},
+      </if>
+      <if test="choiceNamed != null" >
+        choice_named = #{choiceNamed,jdbcType=VARCHAR},
+      </if>
+      <if test="questionType != null" >
+        question_type = #{questionType,jdbcType=INTEGER},
+      </if>
+      <if test="choiceValue != null" >
+        choice_value = #{choiceValue,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

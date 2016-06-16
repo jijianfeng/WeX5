@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zlzkj.app.mapper.ResumeMapper" >
+  <resultMap id="BaseResultMap" type="com.zlzkj.app.model.Resume" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="work_time" property="workTime" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="expected_salary" property="expectedSalary" jdbcType="VARCHAR" />
+    <result column="work_status" property="workStatus" jdbcType="INTEGER" />
+    <result column="quality" property="quality" jdbcType="INTEGER" />
+    <result column="user_school" property="userSchool" jdbcType="VARCHAR" />
+    <result column="user_intro" property="userIntro" jdbcType="VARCHAR" />
+    <result column="user_tag" property="userTag" jdbcType="VARCHAR" />
+    <result column="add_user" property="addUser" jdbcType="INTEGER" />
+    <result column="add_time" property="addTime" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, work_time, address, expected_salary, work_status, quality, user_school, user_intro, 
+    user_tag, add_user, add_time, status
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from w_resume
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from w_resume
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zlzkj.app.model.Resume" >
+  	<selectKey resultType="java.lang.Integer" keyProperty="id" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into w_resume
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="workTime != null" >
+        work_time,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="expectedSalary != null" >
+        expected_salary,
+      </if>
+      <if test="workStatus != null" >
+        work_status,
+      </if>
+      <if test="quality != null" >
+        quality,
+      </if>
+      <if test="userSchool != null" >
+        user_school,
+      </if>
+      <if test="userIntro != null" >
+        user_intro,
+      </if>
+      <if test="userTag != null" >
+        user_tag,
+      </if>
+      <if test="addUser != null" >
+        add_user,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="status != null" >
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="workTime != null" >
+        #{workTime,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedSalary != null" >
+        #{expectedSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="workStatus != null" >
+        #{workStatus,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="userSchool != null" >
+        #{userSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntro != null" >
+        #{userIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="userTag != null" >
+        #{userTag,jdbcType=VARCHAR},
+      </if>
+      <if test="addUser != null" >
+        #{addUser,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zlzkj.app.model.Resume" >
+    update w_resume
+    <set >
+      <if test="workTime != null" >
+        work_time = #{workTime,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="expectedSalary != null" >
+        expected_salary = #{expectedSalary,jdbcType=VARCHAR},
+      </if>
+      <if test="workStatus != null" >
+        work_status = #{workStatus,jdbcType=INTEGER},
+      </if>
+      <if test="quality != null" >
+        quality = #{quality,jdbcType=INTEGER},
+      </if>
+      <if test="userSchool != null" >
+        user_school = #{userSchool,jdbcType=VARCHAR},
+      </if>
+      <if test="userIntro != null" >
+        user_intro = #{userIntro,jdbcType=VARCHAR},
+      </if>
+      <if test="userTag != null" >
+        user_tag = #{userTag,jdbcType=VARCHAR},
+      </if>
+      <if test="addUser != null" >
+        add_user = #{addUser,jdbcType=INTEGER},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
